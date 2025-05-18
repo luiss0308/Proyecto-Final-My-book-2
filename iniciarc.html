@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar cesion</title>
+    <link rel="icon" href="img/pestaña.PNG" type="image/png">
+    <link href="css/estilosp.css" rel="stylesheet">
+</head>
+
+<body>
+    <div style="height: 4000px;">
+        <div id="contenedor">
+            <div id="menu">
+              <img src="img/logo_final2.PNG" alt="Logo" class="logo">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="donaciones.html">Donaciones</a>
+                <strong>Iniciar sesión</strong>
+            </div>
+
+            <div id="contenido">
+                <h1>Iniciar sesión</h1>
+                <p>*Ingresa tus datos y selecciona el boton verificar, si te refresca la pantalla, todo esta en orden y puedes proseguir con la siguiente accion</p>
+            </div>
+
+            <form>
+                
+                <div>
+                    <label for="correo">Correo</label><br><br>
+                    <input type="email" id="correo" name="correo"><br><br><br>
+
+                    <label for="contraseña">Contraseña</label><br><br>
+                    <input type="password" id="contraseña" name="contraseña">
+                    <a href="registrarse.html">¿No tienes una cuenta?</a>
+                </div>
+                
+                <br>
+                <div>
+                    <input type="submit" value="Verificar datos">
+                    <button type="button" onclick="redirigir()">Iniciar sesión</button>
+                </div>
+            </form>
+
+            <script>
+            function redirigir() {
+                window.location.href = "menu-donacion.html"; 
+            }
+            </script>
+        </div>
+
+        <div id="final">
+            <div id="redes">
+                <br>
+                <p><strong>Síguenos en nuestras redes sociales:</strong></p>
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img src="img/logo_facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img src="img/logo_instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.whatsapp.com/" target="_blank">
+                    <img src="img/logo_whatsapp.png" alt="WhatsApp">
+                </a>
+                <br>
+                <p>
+                    Para quejas y sugerencias favor de llamar al siguiente número:<br>
+                    - 8126641528
+                </p>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>

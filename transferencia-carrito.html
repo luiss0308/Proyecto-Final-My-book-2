@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="UTF-8">
+<head>
+    <title> Inicio</title>
+    <head>
+    <link rel="icon" href="img/pestaña.PNG" type="image/png" >
+</head>
+
+    <link href="css/estilosp.css" rel="stylesheet">
+</head>
+
+<body>
+    <div style="height: 4000px;">
+    <div id="contenedor">
+        <div id="menu">
+             <img src="img/logo_final2.PNG" alt="Logo" class="logo">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catalogo</a>
+            <a href="nosotros.html">Nosotros</a>
+            <strong>Donaciones</strong>
+            <a href="iniciarc.html">Iniciar sesión</a>
+      
+        </div>
+        <div id="contenido">
+           
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    input[type="number"], input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    #formulario-tarjeta {
+      display: none;
+      margin-top: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ingresa la cantidad que deseas donar</h1>
+  <input type="number" id="cantidad" min="1" placeholder="Monto en pesos mexicanos">
+  <button class="btn" onclick="mostrarFormulario()">Donar</button>
+
+  <div id="formulario-tarjeta">
+    <h2>Datos de la Tarjeta</h2>
+    <input type="text" placeholder="Nombre en la tarjeta" required>
+    <input type="text" placeholder="Número de tarjeta" required>
+    <input type="text" placeholder="MM/AA" required>
+    <input type="text" placeholder="CVV" required>
+    <button class="btn" onclick="procesarDonacion()">Procesar compra</button>
+  </div>
+
+  <script>
+    function mostrarFormulario() {
+      const cantidad = parseFloat(document.getElementById("cantidad").value)
+      if (isNaN(cantidad) || cantidad <= 0) {
+        alert("Por favor ingresa un monto válido.")
+        return
+      }
+      document.getElementById("formulario-tarjeta").style.display = "block"
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+    }
+
+    function procesarDonacion() {
+      alert("¡Gracias por tu donación! Se ha procesado correctamente.")
+      document.getElementById("cantidad").value = ""
+      document.getElementById("formulario-tarjeta").style.display = "none"
+    }
+  </script>
+
+</body>
+</html>
+
+        </div>
+       
+
+
+    <div id="final">
+        <div id="redes">
+        <br>
+        <p><strong>Siguenos en nuestras redes sociales:</strong></p>
+        <a href="https://www.facebook.com/" target="_blank">
+            <img src="img/logo_facebook.png" alt="Imagen 1">
+        </a>
+        <a href="https://www.instagram.com/accounts/login/?source=auth_switcher&locale=es_ES" target="_blank">
+            <img src="img/logo_instagram.png"  alt="Imagen 2">
+        </a>
+        <a href="https://www.whatsapp.com/?lang=es_LA" target="_blank">
+            <img src="img/logo_whatsapp.png"  alt="Imagen 3 ">
+        </a>
+        <br>
+<p>Para quejas y sugerencias favor de llamar al siguiente numero:
+    <br>
+    - 8126641528
+    <br>
+    
+</p>
+
+
+</div>
+
+   
+    
+
+    
+</div>
+    
+</body>
+
+</html>

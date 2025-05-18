@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="UTF-8">
+<head>
+    <title> Inicio</title>
+    <head>
+    <link rel="icon" href="img/pestaña.PNG" type="image/png" >
+</head>
+
+    <link href="css/estilosp.css" rel="stylesheet">
+</head>
+
+<body>
+    <div style="height: 4000px;">
+    <div id="contenedor">
+        <div id="menu">
+             <img src="img/logo_final2.PNG" alt="Logo" class="logo">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catalogo</a>
+            <a href="nosotros.html">Nosotros</a>
+            <strong>Donaciones</strong>
+            <a href="iniciarc.html">Iniciar sesión</a>
+      
+        </div>
+        <div id="contenido">
+   
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .item, .carrito-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(93, 159, 235);
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #579fe2;
+        }
+
+        button.eliminar {
+            background-color: #e74c3c;
+        }
+
+        button.eliminar:hover {
+            background-color: #c0392b;
+        }
+
+        #carrito {
+            margin-top: 30px;
+            border-top: 2px solid #000;
+            padding-top: 10px;
+        }
+
+        #total {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 10px #000;
+        }
+
+        .modal-content input {
+            width: 100%;
+            margin: 5px 0 15px;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        .close {
+            float: right;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        #procesar-btn {
+            background-color: #007BFF;
+        }
+
+        #procesar-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Carrito de compras</h1>
+    <div id="catalogo"></div>
+
+    <h2>Carrito de Compras</h2>
+    <div id="carrito"></div>
+    <div id="total">Total: $0 MXN</div>
+    <br>
+    <button id="procesar-btn" onclick="mostrarModal()">Procesar Compra</button>
+
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h3>Datos de la Tarjeta</h3>
+            <input type="text" id="nombre" placeholder="Nombre en la tarjeta" required>
+            <input type="text" id="tarjeta" placeholder="Número de tarjeta (16 dígitos)" maxlength="16">
+            <input type="text" id="expiracion" placeholder="MM/AA" maxlength="5">
+            <input type="text" id="cvv" placeholder="CVV" maxlength="4">
+            <button onclick="procesarPago()">Confirmar Pago</button>
+        </div>
+    </div>
+
+    <script>
+        const grados = [
+            { grado: "1° de Primaria", precio: 830 },
+            { grado: "2° de Primaria", precio: 845 },
+            { grado: "3° de Primaria", precio: 858 },
+            { grado: "1° de Secundaria", precio: 1065 },
+            { grado: "2° de Secundaria", precio: 1083 },
+            { grado: "Materias Generales Preparatoria", precio: 2575 },
+            { grado: "Lecturas Preparatoria", precio: 1040 }
+        ];
+
+        let carrito = [];
+        const catalogoDiv = document.getElementById('catalogo');
+        const carritoDiv = document.getElementById('carrito');
+        const totalDiv = document.getElementById('total');
+
+        function renderCatalogo() {
+            catalogoDiv.innerHTML = '';
+            grados.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                itemDiv.innerHTML = `
+                    <div class="item-title">${item.grado}</div>
+                    <div>Precio: $${item.precio} MXN</div>
+                    <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
+                `;
+                catalogoDiv.appendChild(itemDiv);
+            });
+        }
+
+        function agregarAlCarrito(index) {
+            carrito.push(grados[index]);
+            renderCarrito();
+        }
+
+        function eliminarDelCarrito(i) {
+            carrito.splice(i, 1);
+            renderCarrito();
+        }
+
+        function renderCarrito() {
+            carritoDiv.innerHTML = '';
+            let total = 0;
+            carrito.forEach((item, i) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'carrito-item';
+                itemDiv.innerHTML = `
+                    ${item.grado} - $${item.precio} MXN 
+                    <button class="eliminar" onclick="eliminarDelCarrito(${i})">Eliminar</button>
+                `;
+                carritoDiv.appendChild(itemDiv);
+                total += item.precio;
+            });
+            totalDiv.innerText = `Total: $${total} MXN`;
+        }
+
+        function mostrarModal() {
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
+            document.getElementById("modal").style.display = "block";
+        }
+
+        function cerrarModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function procesarPago() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const tarjeta = document.getElementById('tarjeta').value.trim();
+            const expiracion = document.getElementById('expiracion').value.trim();
+            const cvv = document.getElementById('cvv').value.trim();
+
+            if (!nombre || tarjeta.length !== 16 || !expiracion.match(/^\d{2}\/\d{2}$/) || cvv.length < 3) {
+                alert("Por favor, completa correctamente todos los campos.");
+                return;
+            }
+
+            cerrarModal();
+            alert(" Compra procesada con éxito.\nGracias por tu compra.");
+            carrito = [];
+            renderCarrito();
+        }
+
+        // Inicializar
+        renderCatalogo();
+    </script>
+
+</body>
+</html>
+
+    
+
+
+
+</div>
+
+
+
+    <div id="final">
+        <div id="redes">
+        <br>
+        <p><strong>Siguenos en nuestras redes sociales:</strong></p>
+        <a href="https://www.facebook.com/" target="_blank">
+            <img src="img/logo_facebook.png" alt="Imagen 1">
+        </a>
+        <a href="https://www.instagram.com/accounts/login/?source=auth_switcher&locale=es_ES" target="_blank">
+            <img src="img/logo_instagram.png"  alt="Imagen 2">
+        </a>
+        <a href="https://www.whatsapp.com/?lang=es_LA" target="_blank">
+            <img src="img/logo_whatsapp.png"  alt="Imagen 3 ">
+        </a>
+        <br>
+<p>Para quejas y sugerencias favor de llamar al siguiente numero:
+    <br>
+    - 8126641528
+    <br>
+    
+</p>
+
+
+</div>
+
+   
+    
+
+    
+</div>
+    
+</body>
+
+</html>

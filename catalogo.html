@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="UTF-8">
+<head>
+    <title>Catalogo</title>
+    <link rel="icon" href="img/pestaña.PNG" type="image/png" >
+    <link href="css/estilosp.css" rel="stylesheet">
+</head>
+
+<body>
+    <div style="height: auto;">
+    <div id="contenedor">
+        <div id="menu">
+           <img src="img/logo_final2.PNG" alt="Logo" class="logo">
+            <a href="index.html">Inicio</a>
+            <strong>Catalogo</strong>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="donaciones.html">Donaciones</a>
+            <a href="iniciarc.html">Iniciar sesión</a>
+        </div>
+
+        <div id="contenido">
+            <h1>Catálogo de Libros</h1>
+
+            <form class="radio-group" aria-label="Niveles educativos">
+                <fieldset>
+                    <legend>Selecciona el nivel educativo</legend>
+
+                    <input type="radio" id="primaria" name="nivel" value="primaria" />
+                    <label for="primaria" tabindex="0">Primaria</label>
+
+                    <input type="radio" id="secundaria" name="nivel" value="secundaria" />
+                    <label for="secundaria" tabindex="0">Secundaria</label>
+
+                    <input type="radio" id="preparatoria" name="nivel" value="preparatoria" />
+                    <label for="preparatoria" tabindex="0">Preparatoria</label>
+                </fieldset>
+            </form>
+
+            <section class="list-container" id="libros-container" aria-live="polite" tabindex="0">
+            
+            </section>
+        </div>
+    </div>
+
+    <div id="final">
+        <div id="redes">
+            <br>
+            <p><strong>Síguenos en nuestras redes sociales:</strong></p>
+            <a href="https://www.facebook.com/" target="_blank">
+                <img src="img/logo_facebook.png" alt="Imagen 1">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+                <img src="img/logo_instagram.png" alt="Imagen 2">
+            </a>
+            <a href="https://www.whatsapp.com/" target="_blank">
+                <img src="img/logo_whatsapp.png" alt="Imagen 3">
+            </a>
+
+            <br><br>
+
+            <p>Para quejas y sugerencias favor de llamar al siguiente número:
+                <br>
+                - 8126641528
+              
+            </p>
+      
+        </div>
+    </div>
+    <script>
+const librosData = {
+    primaria: [
+        { grade: "1° de Primaria", precioTotal: 830, books: ["Español 1", "Libro de Lecturas 1", "Matemáticas 1", "La Entidad donde Vivo 1", "Conocimiento del Medio 1", "Formación Cívica y Ética 1", "Educación Artística 1", "Educación Física 1", "Inglés 1 (en algunas escuelas)"] },
+        { grade: "2° de Primaria", precioTotal: 845, books: ["Español 2", "Libro de Lecturas 2", "Matemáticas 2", "La Entidad donde Vivo 2", "Conocimiento del Medio 2", "Formación Cívica y Ética 2", "Educación Artística 2", "Educación Física 2", "Inglés 2"] },
+        { grade: "3° de Primaria", precioTotal: 858, books: ["Español 3", "Libro de Lecturas 3", "Matemáticas 3", "La Entidad donde Vivo 3", "Ciencias Naturales 3", "Formación Cívica y Ética 3", "Educación Artística 3", "Educación Física 3", "Inglés 3"] },
+        { grade: "4° de Primaria", precioTotal: 907, books: ["Español 4", "Libro de Lecturas 4", "Matemáticas 4", "Geografía 4", "Historia 4", "Ciencias Naturales 4", "Formación Cívica y Ética 4", "Educación Artística 4", "Educación Física 4", "Inglés 4"] },
+        { grade: "5° de Primaria", precioTotal: 930, books: ["Español 5", "Libro de Lecturas 5", "Matemáticas 5", "Geografía 5", "Historia 5", "Ciencias Naturales 5", "Formación Cívica y Ética 5", "Educación Artística 5", "Educación Física 5", "Inglés 5"] },
+        { grade: "6° de Primaria", precioTotal: 955, books: ["Español 6", "Libro de Lecturas 6", "Matemáticas 6", "Geografía 6", "Historia 6", "Ciencias Naturales 6", "Formación Cívica y Ética 6", "Educación Artística 6", "Educación Física 6", "Inglés 6"] }
+    ],
+    secundaria: [
+        { grade: "1° de Secundaria", precioTotal: 1065, books: ["Español I", "Matemáticas I", "Ciencias I (Biología)", "Historia I (Historia Universal I)", "Geografía de México y del Mundo", "Formación Cívica y Ética I", "Tecnología I", "Educación Artística I", "Educación Física I", "Inglés I"] },
+        { grade: "2° de Secundaria", precioTotal: 1083, books: ["Español II", "Matemáticas II", "Ciencias II (Física)", "Historia II (Historia Universal II)", "Formación Cívica y Ética II", "Tecnología II", "Educación Artística II", "Educación Física II", "Inglés II"] },
+        { grade: "3° de Secundaria", precioTotal: 1101, books: ["Español III", "Matemáticas III", "Ciencias III (Química)", "Historia III (Historia de México)", "Formación Cívica y Ética III", "Tecnología III", "Educación Artística III", "Educación Física III", "Inglés III"] }
+    ],
+    preparatoria: [
+        { grade: "Materias Generales (1º a 4º semestre)", precioTotal: 2575, books: ["Taller de Lectura y Redacción I y II", "Literatura I y II", "Matemáticas I (Álgebra)", "Matemáticas II (Geometría y Trigonometría)", "Matemáticas III (Geometría Analítica)", "Matemáticas IV (Cálculo Diferencial e Integral)", "Física I y II", "Química I y II", "Biología I y II", "Historia de México I y II", "Historia Universal Contemporánea", "Filosofía (Ética, Lógica)", "Introducción a las Ciencias Sociales", "Sociología", "Economía", "Derecho", "Administración", "Inglés I, II, III, IV", "Informática I y II", "Educación Física (optativo)"] },
+        { grade: "Libros comunes de lectura para Preparatoria", precioTotal: 1040, books: ["Don Quijote de la Mancha — Miguel de Cervantes", "La Iliada — Homero", "La Odisea — Homero", "Cien años de soledad — Gabriel García Márquez", "Ensayo sobre la ceguera — José Saramago", "Filosofía para principiantes — Richard Osborne", "Antígona — Sófocles"] }
+    ]
+};
+
+function buildListHTML(gradeGroup) {
+    const ulItems = gradeGroup.books.map(book => `<li>${book}</li>`).join('');
+    return `<div class="grade-group">
+                <div class="grade-title">${gradeGroup.grade}</div>
+                <div class="grade-price">Precio total: $${gradeGroup.precioTotal} MXN</div>
+                <ul>${ulItems}</ul>
+            </div>`;
+}
+
+const librosContainer = document.getElementById('libros-container');
+const radios = document.querySelectorAll('input[name="nivel"]');
+
+function showLibros(level) {
+    const groups = librosData[level];
+    if (!groups) {
+        librosContainer.innerHTML = '';
+        return;
+    }
+    const html = groups.map(buildListHTML).join('');
+    librosContainer.innerHTML = html;
+    librosContainer.focus();
+}
+
+radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        showLibros(radio.value);
+    });
+});
+</script>
